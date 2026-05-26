@@ -1,0 +1,561 @@
+:root {
+  --scale: 1;
+  --canvas-w: 1920px;
+  --canvas-h: 960px;
+  --bg: #191612;
+  --panel: rgba(47, 41, 32, 0.58);
+  --line: rgba(169, 145, 98, 0.27);
+  --line-bright: rgba(210, 157, 49, 0.78);
+  --gold: #d8a43a;
+  --gold-soft: #9e7a33;
+  --text: #f1eadf;
+  --muted: #9c9180;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  overflow-x: hidden;
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "Microsoft YaHei", serif;
+  color: var(--text);
+}
+
+body {
+  height: calc(var(--canvas-h) * var(--scale));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stage {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  transform: scale(var(--scale));
+  transform-origin: left top;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(83, 68, 44, 0.25), transparent 31%),
+    radial-gradient(circle at 16% 16%, rgba(67, 55, 38, 0.2), transparent 31%),
+    radial-gradient(circle at 83% 18%, rgba(67, 51, 32, 0.18), transparent 30%),
+    linear-gradient(120deg, #201c16 0%, #17140f 46%, #1a1611 100%);
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 46%, transparent 0 23%, rgba(0, 0, 0, 0.24) 71%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent 28%, transparent 72%, rgba(0, 0, 0, 0.26));
+  pointer-events: none;
+}
+
+.grain {
+  position: absolute;
+  inset: -80px;
+  opacity: 0.22;
+  pointer-events: none;
+  background-image:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 7px),
+    linear-gradient(24deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 9px);
+  background-size: 13px 17px, 19px 23px;
+  mix-blend-mode: soft-light;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  width: 1277px;
+  margin: 0 auto;
+}
+
+.topbar {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(244, 237, 224, 0.9);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.brand-mark {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 3px solid rgba(238, 231, 218, 0.95);
+  border-radius: 50%;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  border: 2px solid rgba(238, 231, 218, 0.92);
+  border-radius: 50%;
+}
+
+.brand-mark::before {
+  width: 15px;
+  height: 15px;
+  left: -5px;
+  top: 5px;
+  border-right-color: transparent;
+}
+
+.brand-mark::after {
+  width: 6px;
+  height: 6px;
+  right: 4px;
+  top: 3px;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 2px;
+  color: #9a8766;
+  font-size: 17px;
+  font-family: "Times New Roman", "Microsoft YaHei", serif;
+}
+
+.divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(143, 121, 85, 0.45);
+}
+
+.avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(143, 121, 85, 0.5);
+  background: rgba(120, 101, 74, 0.2);
+}
+
+.avatar::before,
+.avatar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(190, 176, 151, 0.55);
+}
+
+.avatar::before {
+  width: 12px;
+  height: 12px;
+  top: 9px;
+  border-radius: 50%;
+}
+
+.avatar::after {
+  width: 26px;
+  height: 14px;
+  bottom: 8px;
+  border-radius: 14px 14px 5px 5px;
+}
+
+.hero {
+  padding-top: 26px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 28px;
+  color: var(--gold);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: rgba(245, 240, 229, 0.96);
+  font-size: 42px;
+  line-height: 1.95;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero h1 .gold {
+  display: inline;
+  color: var(--gold);
+}
+
+.hero h1 .gold-char {
+  display: inline-block;
+  transform-origin: 50% 78%;
+}
+
+.hero h1 span:first-child {
+  margin-left: 3px;
+}
+
+.unlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: -4px;
+  color: #9f937f;
+  font-size: 16px;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.unlock strong {
+  height: 30px;
+  padding: 4px 15px 0;
+  border: 1px solid rgba(150, 123, 77, 0.52);
+  border-radius: 16px;
+  color: #96896f;
+  font-weight: 500;
+}
+
+.unlock i {
+  width: 8px;
+  height: 1px;
+  background: rgba(136, 117, 88, 0.55);
+}
+
+.tiny-rule {
+  display: block;
+  width: 54px;
+  height: 1px;
+  margin: 23px auto 0;
+  background: rgba(148, 126, 88, 0.35);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 393px 46px 396px 46px 396px;
+  align-items: center;
+  margin-top: 36px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.step-card {
+  position: relative;
+  height: 317px;
+  padding: 27px 26px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(38, 33, 27, 0.62);
+  color: rgba(214, 207, 194, 0.55);
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255, 216, 122, 0.05), transparent 48%);
+  opacity: 0;
+}
+
+.step-card.active {
+  border-color: rgba(194, 138, 32, 0.78);
+  background: rgba(53, 46, 36, 0.72);
+  color: #b4aa96;
+}
+
+.step-card.active::before {
+  opacity: 1;
+}
+
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(137, 114, 77, 0.32);
+  border-radius: 50%;
+  color: #d5a640;
+  font-size: 15px;
+  font-family: Georgia, serif;
+}
+
+.step-label {
+  margin: 16px 0 9px;
+  color: var(--gold-soft);
+  font-size: 16px;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.step-card:not(.active) .step-label,
+.step-card:not(.active) .step-number {
+  color: rgba(159, 145, 121, 0.45);
+}
+
+.step-card h2 {
+  margin: 0;
+  color: rgba(244, 237, 225, 0.84);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.step-card:not(.active) h2 {
+  color: rgba(226, 219, 205, 0.5);
+}
+
+.step-copy {
+  width: 305px;
+  margin: 20px 0 0;
+  color: currentColor;
+  font-size: 17px;
+  line-height: 1.9;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.cta {
+  position: absolute;
+  left: 26px;
+  bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 184px;
+  height: 56px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #e2b548, #d79d31);
+  color: #17120b;
+  font-size: 19px;
+  font-family: "Microsoft YaHei", sans-serif;
+  box-shadow: 0 12px 28px rgba(195, 134, 30, 0.12);
+}
+
+.flow-arrow {
+  display: grid;
+  place-items: center;
+  color: #b88426;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
+.card-icon {
+  position: absolute;
+  right: 21px;
+  bottom: 23px;
+  width: 38px;
+  height: 38px;
+  opacity: 0.45;
+}
+
+.person {
+  border: 1px solid rgba(151, 120, 59, 0.5);
+  border-radius: 50%;
+}
+
+.person::before,
+.person::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(151, 120, 59, 0.5);
+}
+
+.person::before {
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.person::after {
+  bottom: 7px;
+  width: 22px;
+  height: 12px;
+  border-radius: 14px 14px 5px 5px;
+}
+
+.route::before,
+.route::after {
+  content: "";
+  position: absolute;
+  border-color: rgba(151, 120, 59, 0.42);
+}
+
+.route::before {
+  left: 4px;
+  top: 18px;
+  width: 27px;
+  height: 1px;
+  background: rgba(151, 120, 59, 0.42);
+  transform: rotate(135deg);
+}
+
+.route::after {
+  right: 4px;
+  top: 15px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(151, 120, 59, 0.42);
+  border-radius: 50%;
+}
+
+.job {
+  border: 1px solid rgba(151, 120, 59, 0.36);
+  border-radius: 4px;
+  width: 31px;
+  height: 22px;
+  right: 24px;
+  bottom: 30px;
+}
+
+.job::before,
+.job::after {
+  content: "";
+  position: absolute;
+  background: rgba(151, 120, 59, 0.36);
+}
+
+.job::before {
+  left: 7px;
+  right: 7px;
+  top: 6px;
+  height: 1px;
+}
+
+.job::after {
+  left: 12px;
+  top: 10px;
+  width: 7px;
+  height: 4px;
+  border: 1px solid rgba(151, 120, 59, 0.36);
+  background: transparent;
+}
+
+.info-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 74px;
+  margin-top: 26px;
+  border: 1px solid rgba(142, 121, 88, 0.47);
+  border-radius: 10px;
+  background: rgba(42, 36, 28, 0.58);
+  color: #9f927f;
+  font-size: 16px;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.info-item strong {
+  color: #fff7e8;
+}
+
+.info-icon {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: #c49a32;
+}
+
+.clock {
+  border: 1px solid rgba(160, 145, 119, 0.45);
+  border-radius: 50%;
+}
+
+.clock::before,
+.clock::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 1px;
+  height: 5px;
+  background: rgba(160, 145, 119, 0.55);
+  transform-origin: bottom;
+}
+
+.clock::after {
+  height: 4px;
+  transform: rotate(55deg);
+}
+
+.flash::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  top: -4px;
+  color: #d6a52e;
+  font-size: 18px;
+}
+
+.refresh::before {
+  content: "↻";
+  position: absolute;
+  left: 0;
+  top: -5px;
+  color: rgba(160, 145, 119, 0.65);
+  font-size: 19px;
+}
+
+.strip-divider {
+  width: 1px;
+  height: 31px;
+  margin: 0 31px;
+  background: rgba(139, 119, 86, 0.42);
+}
+
+.brand,
+.profile,
+.eyebrow,
+.hero h1 span,
+.gold-char,
+.unlock,
+.tiny-rule,
+.step-card,
+.flow-arrow,
+.info-strip {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
