@@ -87,15 +87,17 @@ a {
   top: 0;
   width: 826px;
   height: 761px;
+  display: none;
   opacity: 0;
   animation: backgroundLayerFade 1120ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
 }
 
 .title-glow {
-  left: 810px;
-  top: 330px;
-  width: 300px;
-  height: 300px;
+  left: 795px;
+  top: 73.5px;
+  width: 295.5px;
+  height: 306px;
+  display: none;
   border-radius: 50%;
   background: #30b1b8;
   opacity: 0;
@@ -242,7 +244,7 @@ a {
 .hero {
   position: absolute;
   left: 459px;
-  top: 139px;
+  top: 131px;
   width: 1002px;
   text-align: center;
   z-index: 2;
@@ -251,24 +253,25 @@ a {
 
 .eyebrow {
   margin: 0 0 32px;
-  color: var(--brand-soft);
+  color: #4ec6cc;
   font-size: 20px;
   font-weight: 500;
-  line-height: 28.5px;
+  line-height: 36px;
+  letter-spacing: 2.4px;
 }
 
 h1 {
   margin: 0;
   height: 145px;
   color: var(--text);
-  font-size: 54px;
+  font-size: 53px;
   font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 5.4px;
+  line-height: 81px;
+  letter-spacing: 6.36px;
 }
 
 h1 .accent {
-  color: var(--brand-soft);
+  color: #4ec6cc;
   font-weight: 700;
 }
 
@@ -300,25 +303,25 @@ h1 .accent {
 .steps {
   position: absolute;
   left: 242px;
-  top: 435px;
+  top: 427px;
   width: 1436px;
   height: 402px;
   display: flex;
   align-items: stretch;
-  gap: 72px;
+  gap: 73px;
   z-index: 3;
   perspective: 1600px;
 }
 
 .card {
   position: relative;
-  width: 431px;
+  width: 430px;
   height: 402px;
   padding: 30px;
-  border: 1px solid var(--panel-border);
-  border-radius: 20px;
+  border: 0;
+  border-radius: 16px;
   background: var(--panel);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 2px 2px 4px #000, -2px -2px 4px rgba(255, 255, 255, 0.2), inset -1px -1px 0.5px #000, inset 1px 1px 0.5px rgba(255, 255, 255, 0.2);
   color: var(--muted);
   overflow: hidden;
   isolation: isolate;
@@ -337,10 +340,9 @@ h1 .accent {
   inset: -1px;
   z-index: 0;
   border-radius: inherit;
-  background: radial-gradient(360px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(116, 211, 215, 0.27), rgba(48, 177, 184, 0.14) 30%, rgba(255, 255, 255, 0.04) 48%, transparent 70%);
+  background: transparent;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 360ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card::after {
@@ -349,10 +351,9 @@ h1 .accent {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 32%, rgba(116, 211, 215, 0.08) 100%);
+  background: transparent;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card > * {
@@ -361,15 +362,9 @@ h1 .accent {
 }
 
 .card:hover {
-  border-color: rgba(116, 211, 215, 0.85);
   background-color: #2d2c2a;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 30px 60px rgba(0, 0, 0, 0.32), 0 0 32px rgba(48, 177, 184, 0.08);
+  box-shadow: 2px 2px 4px #000, -2px -2px 4px rgba(255, 255, 255, 0.22), inset -1px -1px 0.5px #000, inset 1px 1px 0.5px rgba(255, 255, 255, 0.24), 0 30px 60px rgba(0, 0, 0, 0.32), 0 0 32px rgba(48, 177, 184, 0.08);
   transform: perspective(1100px) translate3d(0, -8px, 34px) rotateX(1.4deg);
-}
-
-.card:hover::before,
-.card:hover::after {
-  opacity: 1;
 }
 
 .card:nth-child(2) {
@@ -383,49 +378,17 @@ h1 .accent {
 
 .card-active {
   --card-index: 0;
-  border-color: var(--brand);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 28px 45px rgba(0, 0, 0, 0.35);
+  box-shadow: 2px 2px 4px #000, -2px -2px 4px rgba(255, 255, 255, 0.2), inset -1px -1px 0.5px #000, inset 1px 1px 0.5px rgba(255, 255, 255, 0.2);
   color: var(--text);
 }
 
-.card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  height: 44px;
-}
-
-.step-icon {
-  width: 44px;
-  height: 44px;
-  display: block;
-}
-
-.badge {
-  min-height: 31px;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-bright);
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 1.4px;
-  white-space: nowrap;
-}
-
-.badge-active {
-  background: var(--brand-mid);
-  color: var(--brand-pale);
-  font-weight: 500;
-}
-
 .card-copy {
-  margin-top: 27px;
+  margin-top: 0;
+  width: 370px;
 }
 
 .card:nth-child(n + 2) .card-copy {
-  margin-top: 26px;
+  margin-top: 0;
 }
 
 .step-label,
@@ -438,20 +401,20 @@ h1 .accent {
 .step-label {
   height: 14px;
   color: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 14px;
-  letter-spacing: 1.4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 1.92px;
 }
 
 .card-copy h2 {
   margin-top: 20px;
   height: 24px;
   color: inherit;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 2.4px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 2.6px;
 }
 
 .card-copy > p:last-child {
@@ -459,8 +422,8 @@ h1 .accent {
   color: inherit;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 1.6px;
+  line-height: 32px;
+  letter-spacing: 1.92px;
 }
 
 .muted {
@@ -470,19 +433,20 @@ h1 .accent {
 .primary-action {
   position: absolute;
   left: 30px;
-  top: 273px;
-  width: 180px;
-  height: 40px;
+  top: 228px;
+  width: 137px;
+  height: 42px;
   border: 0;
-  border-radius: 24px;
-  background: var(--brand-deep);
+  border-radius: 16px;
+  background: #1d9da3;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 32px;
+  letter-spacing: 1.92px;
   cursor: pointer;
   transition: background 160ms ease, transform 160ms ease;
 }
@@ -509,16 +473,16 @@ h1 .accent {
 .card-note {
   position: absolute;
   left: 30px;
-  bottom: 29px;
+  bottom: 26px;
   width: 371px;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 1.6px;
+  font-size: 13px;
+  line-height: 26px;
+  letter-spacing: 1.56px;
 }
 
 .card-note span {
-  color: var(--brand-soft);
+  color: #1d9da3;
 }
 
 .card-note.strong {
@@ -527,6 +491,18 @@ h1 .accent {
 
 .is-locked {
   cursor: pointer;
+}
+
+.person {
+  position: absolute;
+  left: 290px;
+  top: 198px;
+  z-index: 1;
+  width: 110px;
+  height: 174px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 
 .is-locked:focus-visible,
