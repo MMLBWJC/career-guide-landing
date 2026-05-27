@@ -4,95 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>生涯问向</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main class="stage" aria-label="生涯问向引导页">
-      <div class="grain"></div>
-      <div class="shell">
+    <main class="viewport" aria-label="生涯问向引导页">
+      <section class="stage" id="stage">
+        <img class="ambient ambient-top" src="./img/glow-top.svg" alt="" />
+        <img class="ambient ambient-bottom" src="./img/glow-bottom.svg" alt="" />
+        <img class="grid-bg" src="./img/网格.svg" alt="" />
+        <img class="title-glow" src="./img/光晕.png" alt="" />
+
         <header class="topbar">
           <a class="brand" href="#" aria-label="生涯问向首页">
-            <span class="brand-mark" aria-hidden="true"></span>
-            <span>生涯问向</span>
+            <img class="brand-mark" src="./img/logo-mark.svg" alt="" />
+            <img class="brand-text" src="./img/logo-text.svg" alt="生涯问向" />
           </a>
-          <div class="profile">
-            <span>Percy</span>
-            <span class="divider"></span>
-            <span class="avatar" aria-hidden="true"></span>
+
+          <div class="user-area">
+            <button class="profile-button" type="button" aria-expanded="false" aria-controls="profile-panel">
+              <span>Say My Name</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span class="avatar-mask">
+                <img src="./img/avatar.png" alt="" />
+              </span>
+            </button>
+            <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="打开菜单">
+              <img src="./img/menu.svg" alt="" />
+            </button>
           </div>
         </header>
 
-        <section class="hero" aria-labelledby="hero-title">
+        <div class="profile-panel" id="profile-panel" hidden>
+          <strong>Say My Name</strong>
+          <span>当前旅程：了解自己</span>
+        </div>
+
+        <nav class="menu-panel" id="menu-panel" hidden aria-label="菜单">
+          <a href="#steps">旅程步骤</a>
+          <a href="#steps">职业路径</a>
+          <a href="#steps">岗位推荐</a>
+        </nav>
+
+        <section class="hero">
           <p class="eyebrow">你的旅程，从这里开始</p>
-          <h1 id="hero-title">
-            <span>从认识自己，到明确目标</span>
-            <span>最后找到真正适合你的机会</span>
+          <h1>
+            从<span class="accent">认识自己</span>，到明确目标<br />
+            最后找到真正适合你的机会
           </h1>
-          <div class="unlock">
-            <span>完成评估后，你将解锁：</span>
-            <strong>职业画像</strong>
-            <i></i>
-            <strong>职业路径</strong>
-            <i></i>
-            <strong>岗位推荐</strong>
-          </div>
-          <span class="tiny-rule" aria-hidden="true"></span>
         </section>
 
-        <section class="cards" aria-label="评估流程">
-          <article class="step-card active">
-            <div class="step-number">1</div>
-            <p class="step-label">第一步</p>
-            <h2>了解自己</h2>
-            <p class="step-copy">完成评估，探索你的工作风格、核心动力、天然优势与潜在盲区。</p>
-            <a class="cta" href="#">
-              <span>开始评估</span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <span class="card-icon person" aria-hidden="true"></span>
+        <section class="steps" id="steps" aria-label="旅程步骤">
+          <article class="card card-active" data-step="1">
+            <div class="card-top">
+              <img class="step-icon" src="./img/icon-step1.svg" alt="" />
+              <span class="badge badge-active">当前步骤</span>
+            </div>
+            <div class="card-copy">
+              <p class="step-label">第一步</p>
+              <h2>了解自己</h2>
+              <p>完成评估，探索你的工作风格、核心动力、天然优势与潜在盲区。</p>
+            </div>
+            <button class="primary-action" type="button">
+              开始评估
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4.4 10h10.1M10.4 5.8 14.6 10l-4.2 4.2" />
+              </svg>
+            </button>
+            <p class="card-note">约<span>30分钟</span>完成</p>
           </article>
 
-          <span class="flow-arrow" aria-hidden="true">→</span>
-
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <p class="step-label">第二步</p>
-            <h2>规划职业路径</h2>
-            <p class="step-copy">根据你的画像，系统将呈现多个职业方向，帮助你缩小范围，找到真正适合你的路。</p>
-            <span class="card-icon route" aria-hidden="true"></span>
+          <article class="card is-locked" data-step="2" tabindex="0">
+            <div class="card-top">
+              <img class="step-icon" src="./img/icon-step2.svg" alt="" />
+              <span class="badge">完成评估后解锁</span>
+            </div>
+            <div class="card-copy muted">
+              <p class="step-label">第二步</p>
+              <h2>规划职业路径</h2>
+              <p>根据你的画像，系统呈现多个职业方向，帮助<br />你缩小范围，找到更适合的路。</p>
+            </div>
+            <p class="card-note strong"><span>完成即看</span> 评估结果</p>
           </article>
 
-          <span class="flow-arrow" aria-hidden="true">→</span>
-
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <p class="step-label">第三步</p>
-            <h2>直通优势岗位</h2>
-            <p class="step-copy">方向逐渐清晰后，系统将推荐更匹配的实习与职场机会，并持续为你实时推送。</p>
-            <span class="card-icon job" aria-hidden="true"></span>
+          <article class="card is-locked" data-step="3" tabindex="0">
+            <div class="card-top">
+              <img class="step-icon" src="./img/icon-step3.svg" alt="" />
+              <span class="badge">路径确认后解锁</span>
+            </div>
+            <div class="card-copy muted">
+              <p class="step-label">第三步</p>
+              <h2>直通优势岗位</h2>
+              <p>方向逐渐清晰后，系统持续推荐更匹配的实习<br />与职场机会。</p>
+            </div>
+            <p class="card-note strong"><span>持续推送</span> 匹配岗位</p>
           </article>
         </section>
 
-        <footer class="info-strip" aria-label="评估说明">
-          <div class="info-item">
-            <span class="info-icon clock" aria-hidden="true"></span>
-            <span>约 <strong>30 分钟</strong> 完成</span>
-          </div>
-          <span class="strip-divider"></span>
-          <div class="info-item">
-            <span class="info-icon flash" aria-hidden="true"></span>
-            <span><strong>即时查看</strong> — 评估完成后立即获得结果</span>
-          </div>
-          <span class="strip-divider"></span>
-          <div class="info-item">
-            <span class="info-icon refresh" aria-hidden="true"></span>
-            <span><strong>持续推送</strong> — 推荐岗位自动更新</span>
-          </div>
-        </footer>
-      </div>
+        <div class="toast" role="status" aria-live="polite"></div>
+      </section>
     </main>
 
-    <script src="./gsap.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
