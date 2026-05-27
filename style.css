@@ -90,14 +90,16 @@ a {
 }
 
 .title-glow {
-  left: 565px;
-  top: 0;
-  width: 790px;
-  height: 960px;
-  opacity: 0.36;
+  left: 810px;
+  top: 330px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #30b1b8;
+  opacity: 0.64;
+  filter: blur(400px);
+  transform: translateZ(0);
   mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0 34%, rgba(0, 0, 0, 0.58) 58%, transparent 78%);
-  mask-image: radial-gradient(circle at 50% 42%, #000 0 34%, rgba(0, 0, 0, 0.58) 58%, transparent 78%);
 }
 
 .topbar {
