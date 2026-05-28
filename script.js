@@ -1,5 +1,6 @@
 const DESIGN_WIDTH = 1920;
 const DESIGN_HEIGHT = 960;
+const MIN_VIEWPORT_WIDTH = 1280;
 const stage = document.getElementById("stage");
 const profileButton = document.querySelector(".profile-button");
 const menuButton = document.querySelector(".menu-button");
@@ -9,9 +10,10 @@ const toast = document.querySelector(".toast");
 let toastTimer = 0;
 
 function fitStage() {
-  const scale = window.innerWidth / DESIGN_WIDTH;
+  const layoutWidth = Math.max(window.innerWidth, MIN_VIEWPORT_WIDTH);
+  const scale = layoutWidth / DESIGN_WIDTH;
   stage.style.setProperty("--scale", scale.toString());
-  stage.style.left = `${(window.innerWidth - DESIGN_WIDTH * scale) / 2}px`;
+  stage.style.left = `${(layoutWidth - DESIGN_WIDTH * scale) / 2}px`;
   stage.style.top = `${(window.innerHeight - DESIGN_HEIGHT * scale) / 2}px`;
 }
 
